@@ -16,38 +16,42 @@ const CenteredContent = styled.div`
 `;
 
 export const App = () => {
-  const [users, setUsers] = useState(null);
+	const [users, setUsers] = useState(null);
 
-  const loadUsers = useCallback(() => {
-      const { GET, BASE_URL } = urls;
-      fetch(BASE_URL+GET.getUsers)
-      .then(response => response.json())
-      .then(data => {
-          data.length && setUsers(data.sort((a, b) => { //Sort alphabetically
-            if(a.name < b.name) { return -1; }
-            if(a.name > b.name) { return 1; }
-            return 0;
-          }));
-      })
-      .catch(error => console.log(error));
-  }, []);
+	const loadUsers = useCallback(() => {
+		const { GET, BASE_URL } = urls;
+		fetch(BASE_URL + GET.getUsers)
+		.then(response => response.json())
+		.then(data => {
+			data.length && setUsers(data.sort((a, b) => { //Sort alphabetically
+				if (a.name < b.name) {
+					return -1;
+				}
+				if (a.name > b.name) {
+					return 1;
+				}
+				return 0;
+			}));
+		})
+		.catch(error => console.log(error));
+	}, []);
 
-  useEffect(() => {
-    if(!users) {
-      loadUsers();
-    }
-  },[loadUsers, users]);
+	useEffect(() => {
+		if (!users) {
+			loadUsers();
+		}
+	}, [loadUsers, users]);
 
-  return (
-    <>
-      <Title />
-      <CenteredContent>
-        {
-          Array.isArray(users) && users.length ?
-            <Search users={users}/>
-            : <Loader />
-        }
-      </CenteredContent>
-    </>
-  )
+	return (
+		<>
+			<Title/>
+			<CenteredContent>
+				{
+					Array.isArray(users) && users.length ?
+						<Search users={users}/>
+						: <Loader/>
+				}
+			</CenteredContent>
+		</>
+	)
 };

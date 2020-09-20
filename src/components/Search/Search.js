@@ -17,7 +17,7 @@ export const Search = ({ users }) => {
 				setResults={setResults}
 				users={users}
 			/>
-			{results.length > 0 ? <SearchResults results={results} /> : <NoResults>No results found.</NoResults> }
+			{results.length > 0 ? <SearchResults results={results}/> : <NoResults>No results found.</NoResults>}
 		</>
 	);
 };

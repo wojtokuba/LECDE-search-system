@@ -21,14 +21,14 @@ const TextLight = styled.span`
 	font-weight: 300;
 `;
 
-export const SearchResults = ({results}) => {
+export const SearchResults = ({ results }) => {
 
 	return (
 		<ResultsPage>
 			{
 				results.map((result, idx) =>
 					<Row key={`idx-${idx}`}>
-						<TextLight>{idx+1}.</TextLight> {result.name} <TextLight>@{result.username}</TextLight>
+						<TextLight>{idx + 1}.</TextLight> {result.name} <TextLight>@{result.username}</TextLight>
 					</Row>
 				)
 			}

@@ -8,9 +8,9 @@ const SearchTitle = styled.h1`
 `;
 
 export const Title = memo(() => {
-    return (
-        <SearchTitle>
-          Users list
-        </SearchTitle>
-     );
+	return (
+		<SearchTitle>
+			Users list
+		</SearchTitle>
+	);
 });
